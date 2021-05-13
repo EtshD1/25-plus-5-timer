@@ -1,4 +1,4 @@
-export default {
+const types = {
   INCREAMENT: {
     BREAK: "BREAK_INCREAMENT",
     SESSION: "SESSION_INCREAMENT"
@@ -8,3 +8,5 @@ export default {
     SESSION: "SESSION_DECREAMENT"
   }
 }
+
+export default types;
