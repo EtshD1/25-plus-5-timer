@@ -9,6 +9,9 @@ type Action = {
 const breakTime = (state = 300, action: Action) => {
   switch (action.type) {
     case types.INCREAMENT.BREAK:
+      if (state >= 3600) {
+        return 3600;
+      }
       return state + 60;
     case types.DECREAMENT.BREAK:
       if (state <= 60) {
@@ -25,6 +28,9 @@ const breakTime = (state = 300, action: Action) => {
 const sessionTime = (state = 1500, action: Action) => {
   switch (action.type) {
     case types.INCREAMENT.SESSION:
+      if (state >= 3600) {
+        return 3600;
+      }
       return state + 60;
     case types.DECREAMENT.SESSION:
       if (state <= 60) {
