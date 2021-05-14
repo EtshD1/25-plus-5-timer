@@ -12,9 +12,11 @@ const breakTime = (state = 300, action: Action) => {
       return state + 60;
     case types.DECREAMENT.BREAK:
       if (state <= 60) {
-        return 60
+        return 60;
       }
       return state - 60;
+    case types.RESET:
+      return 300;
   }
   return state;
 }
@@ -29,6 +31,8 @@ const sessionTime = (state = 1500, action: Action) => {
         return 60
       }
       return state - 60;
+    case types.RESET:
+      return 1500;
   }
   return state;
 }

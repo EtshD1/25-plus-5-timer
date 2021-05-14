@@ -6,7 +6,8 @@ const types = {
   DECREAMENT: {
     BREAK: "BREAK_DECREAMENT",
     SESSION: "SESSION_DECREAMENT"
-  }
+  },
+  RESET: "RESET"
 }
 
 export default types;

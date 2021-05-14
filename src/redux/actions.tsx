@@ -15,3 +15,7 @@ export const decrementSession = () => ({
 export const incrementSession = () => ({
   type: types.INCREAMENT.SESSION
 });
+
+export const resetValue = () => ({
+  type: types.RESET
+});
