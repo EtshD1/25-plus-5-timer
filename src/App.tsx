@@ -63,29 +63,37 @@ const App = () => {
   }
 
   return (
-    <div className="App">
-
-      <TimerComponent name="session" time={sessionTime} increment={incrementSession} decrement={decrementSession} />
-      <TimerComponent name="break" time={breakTime} increment={incrementBreak} decrement={decrementBreak} />
-      <div id='reset' onClick={reset}>
-        Reset
-      </div>
+    <div id="App" className={isBreak ? "breakTime" : ""}>
 
       <div>
         <div id="timer-label">
           {isBreak ? "Break" : "Session"}
         </div>
-      </div>
-
-      <div>
         <div id="time-left">
           {timeLeft()}
         </div>
-        <div id='start_stop' onClick={toggleTimer}>
-          {active ? "Stop" : "Start"}
-        </div>
       </div>
-      <audio ref={alarmAudio} id="beep" src="audio/alarm.mp3"></audio>
+
+      <div className="controls">
+        <TimerComponent active={active} name="session" time={sessionTime} increment={incrementSession} decrement={decrementSession} />
+        <div className="actions">
+          <div>
+            <div id='start_stop' onClick={toggleTimer}>
+              <img src={`./images/${active ? "Pause" : "Play"}.svg`} alt={active ? "Pause" : "Play"} />
+            </div>
+          </div>
+          <div id='reset' onClick={reset}>
+            <img src="./images/reset.svg" alt={active ? "Pause" : "Play"} />
+          </div>
+        </div>
+        <TimerComponent active={active} name="break" time={breakTime} increment={incrementBreak} decrement={decrementBreak} />
+      </div>
+
+      <div className="creator">
+        Made by
+        <h4><a href="https://github.com/EtshD1/25-plus-5-timer">EtshD1</a></h4>
+      </div>
+      <audio ref={alarmAudio} id="beep" src="audio/alarm.wav"></audio>
     </div>
   );
 }
@@ -94,24 +102,27 @@ type timerComponentProps = {
   time: number,
   name: string,
   increment: Function,
-  decrement: Function
+  decrement: Function,
+  active: boolean
 }
 
-const TimerComponent = ({ time, name, increment, decrement }: timerComponentProps) => {
+const TimerComponent = ({ time, name, increment, decrement, active }: timerComponentProps) => {
   const dispatch = useDispatch();
 
   const incrementValue = () => dispatch(decrement());
   const decrementValue = () => dispatch(increment());
 
-  return (<div>
+  return (<div className="timer-component">
     <div id={`${name}-label`}>
-      {`${name[0].toLocaleUpperCase()}${name.slice(1)}`} Length:
+      {`${name[0].toLocaleUpperCase()}${name.slice(1)}`} Length
+    </div>
+    <div className="timer-details">
+      <button id={`${name}-decrement`} onClick={incrementValue} className="edit-value" disabled={active}>-</button>
       <div id={`${name}-length`}>
         {time / 60}
       </div>
+      <button id={`${name}-increment`} onClick={decrementValue} className="edit-value" disabled={active}>+</button>
     </div>
-    <div id={`${name}-decrement`} onClick={incrementValue}>-</div>
-    <div id={`${name}-increment`} onClick={decrementValue}>+</div>
   </div>
   );
 }

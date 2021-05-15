@@ -1,0 +1,117 @@
+@import "config";
+
+#App {
+  background-color: $primary-color;
+  height: 100vh;
+  width: 100vw;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 1s ease;
+}
+
+#App.breakTime {
+  background-color: $secondary-color;
+  #time-left {
+    border-color: lighten($color: $secondary-color, $amount: 10);
+  }
+}
+
+#timer-label {
+  text-align: center;
+  font-size: 3rem;
+}
+
+#time-left {
+  width: 37rem;
+  font-size: 9rem;
+  padding: 0 4rem;
+  font-weight: 700;
+  text-align: center;
+  border: 1rem solid;
+  border-color: lighten($color: $primary-color, $amount: 10);
+  border-radius: 4.5rem;
+  margin-bottom: 2.5rem;
+  transition: border-color 1s ease;
+}
+
+#reset,
+#start_stop,
+.edit-value {
+  cursor: pointer;
+}
+
+#start_stop {
+  height: 2rem;
+}
+
+#reset:hover {
+  transition: 0.75s cubic-bezier(0.31, 0.05, 0.12, 0.95);
+  transform: rotate(360deg);
+}
+
+.actions {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  padding: 0 2rem;
+}
+
+.controls {
+  width: 36rem;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.edit-value {
+  padding: 1rem;
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 2rem;
+  opacity: 1;
+  transition: opacity 500ms ease;
+}
+.edit-value:disabled {
+  cursor: auto;
+  color: #fff;
+  opacity: 0.5;
+}
+
+.timer-component {
+  font-size: 1.5rem;
+}
+
+.timer-details {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.creator {
+  margin-top: 1rem;
+  font-size: 0.85rem;
+
+  h4 {
+    text-align: center;
+  }
+
+  a {
+    color: #d8572a;
+    text-decoration: none;
+  }
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  font-family: Montserrat;
+  user-select: none;
+}
+
+@import "./mobile";

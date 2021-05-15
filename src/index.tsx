@@ -1,9 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+
 import App from './App';
+
 import { Provider } from 'react-redux';
-import reducers from './redux/reducers'
 import { createStore } from 'redux';
+import reducers from './redux/reducers'
+
+import "./sass/main.scss";
 
 const store = createStore(reducers);
 
