@@ -83,7 +83,7 @@ const App = () => {
             </div>
           </div>
           <div id='reset' onClick={reset}>
-            <img src="./images/Reset.svg" alt={active ? "Pause" : "Play"} />
+            <img src="./images/Reset.svg" alt="Reset" />
           </div>
         </div>
         <TimerComponent active={active} name="break" time={breakTime} increment={incrementBreak} decrement={decrementBreak} />
