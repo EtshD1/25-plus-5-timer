@@ -59,7 +59,7 @@ const App = () => {
   }, [timer, active, breakTime, isBreak, sessionTime]);
 
   const timeLeft = () => {
-    return `${timer / 60 > 10 ? "" : 0}${Math.floor(timer / 60)}:${timer % 60 > 10 ? "" : 0}${timer % 60}`;
+    return `${timer / 60 >= 10 ? "" : 0}${Math.floor(timer / 60)}:${timer % 60 >= 10 ? "" : 0}${timer % 60}`;
   }
 
   return (
